@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.santt4na.dslist.dto.GameDTO;
 import com.santt4na.dslist.dto.GameMinDTO;
 import com.santt4na.dslist.services.GameService;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @RestController
 @RequestMapping(value = "/games")
@@ -24,4 +26,9 @@ public class GameController {
       return result;
    }
 
+   @GetMapping(value = "/{id}")
+   public GameDTO findById(@PathVariable Long id) {
+      GameDTO result = gameService.findById(id);
+      return result;
+   }
 }
